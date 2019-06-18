@@ -95,6 +95,7 @@
                 <input type="submit" name="simpan" value="Simpan" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
                 <input type="reset" name="reset" value="Bersihkan" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
                 <input type="button" value="Upload Foto Buku" onclick="window.location='blob.php';" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
+                <input type="button" value="Analisis Foto" onclick="window.location='computervision.php';" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
             </label><br>
             <p style="font-size: 14px; font-style: bold|italic; color: red;"><?php echo isset($pesan) ? $pesan : "" ?></p>
         </form>

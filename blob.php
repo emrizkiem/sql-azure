@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
     // Upload Blobs
 	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-	header("Location: analyze.php");
+	header("Location: blob.php");
 }
 
 // List Blobs

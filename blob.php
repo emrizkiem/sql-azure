@@ -10,20 +10,17 @@ use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=nasystorage;AccountKey=SXWwmYuRwoohUvibFtYaOzZ8ivryEqiLWACOnt/ZgptfjkyF3AKeEjKqIP2sXfGOefQoeOBPBrQAo8ZMRV4unw==;";
-$containerName = "blobemrizkiem";
 
-// Blobs CLient
+$containerName = "emrizkiem";
+// Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-
 if (isset($_POST['submit'])) {
 	$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
-    $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
-    // Upload Blobs
+	$content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
+	// echo fread($content, filesize($fileToUpload));
 	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 	header("Location: blob.php");
 }
-
-// List Blobs
 $listBlobsOptions = new ListBlobsOptions();
 $listBlobsOptions->setPrefix("");
 $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
@@ -86,11 +83,11 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
                     foreach($result->getBlobs() as $row) {
                         ?>
                         <tr>
-                            <td><?= $row->getName() ?></td>
-                            <td><?= $row->getUrl() ?></td>
+                            <td><?php echo $row->getName() ?></td>
+                            <td><?php echo $row->getUrl() ?></td>
                             <td>
                                 <form action="computervision.php" method="post">
-                                    <input type="hidden" name="url" value="<?= $row->getUrl() ?>" />
+                                    <input type="hidden" name="url" value="<?php echo $row->getUrl() ?>" />
                                     <input type="submit" name="submit" value="Analisis" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
                                 </form>
                             </td>

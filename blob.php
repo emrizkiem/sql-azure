@@ -63,7 +63,7 @@
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob) {
 
-                echo $blob->getName() . ": " . $blob->getUrl () . "<br/>";
+                echo $blob->getName() . ": " . $blob->getUrl() . "<br/>";
             }
 
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
@@ -72,16 +72,16 @@
 
          echo "This is the content of the blob uploaded: ";
         $blob = $blobClient->getBlob($containerName, $fileToUpload);
-        fpassthru($blob->getContentStream() ) ;
-          echo "<br />";
+        fpassthru($blob->getContentStream()) ;
+          echo "<br/>";
     } catch (ServiceException $e) {
         $code = $e->getCode();
         $error_message = $e->getMessage();
-        echo $code . ": " .  $error_message . "<br />";
+        echo $code . ": " .  $error_message . "<br/>";
     } catch (InvalidArgumentTypeException $e) {
         $code = $e->getCode();
         $error_message = $e->getMessage();
-        echo $code . ": " .  $error_message . "<br />";
+        echo $code . ": " .  $error_message . "<br/>";
     }
     ?>
 

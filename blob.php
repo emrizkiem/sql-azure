@@ -10,7 +10,7 @@ use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=nasystorage;AccountKey=dp7+gEsnt72/Y7zphZIRvN5Mgi+NUhAvB8rlLe1PZfuD1iMg1ZTpin8hzDGVWMJn5lFtr+OKuw+3VjmDIVVsfg==;";
-$containerName = "emrizkiem";
+$containerName = "blobemrizkiem";
 
 // Blobs CLient
 $blobClient = BlobRestProxy::createBlobService($connectionString);
@@ -67,7 +67,7 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
     <h2 style="font-style: bold">Analisa Cover Buku</h2>
     <p>Pilih foto cover buku yang sesuai.<br> Kemudian klik tombol <b>Upload</b>, untuk menganalisa foto klik tombol <b>Analisis</b> pada tabel.</p><br>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="blob.php" method="POST" enctype="multipart/form-data">
         <input type="file" name="fileToUpload" accept=".png,.jpg,.jpeg" style="font-family: Source Code Pro, monospace; font-size: 16px;" required >
         <input type="submit" name="submit" value="Upload" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
     </form><br><br>

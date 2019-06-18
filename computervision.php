@@ -3,10 +3,10 @@
         if(isset($_POST['url'])) {
             $url = $_POST['url'];
         } else {
-            header("Location: azureBlob.php");
+            header("Location: blob.php");
         }
     } else {
-        header("Location: azureBlob.php");
+        header("Location: blob.php");
     }
 ?>
 

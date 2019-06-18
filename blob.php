@@ -9,7 +9,7 @@ use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
-$connectionString = "DefaultEndpointsProtocol=https;AccountName=nasystorage;AccountKey=dp7+gEsnt72/Y7zphZIRvN5Mgi+NUhAvB8rlLe1PZfuD1iMg1ZTpin8hzDGVWMJn5lFtr+OKuw+3VjmDIVVsfg==;";
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=nasystorage;AccountKey=SXWwmYuRwoohUvibFtYaOzZ8ivryEqiLWACOnt/ZgptfjkyF3AKeEjKqIP2sXfGOefQoeOBPBrQAo8ZMRV4unw==;";
 $containerName = "blobemrizkiem";
 
 // Blobs CLient

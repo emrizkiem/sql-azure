@@ -94,7 +94,8 @@
             <label>
                 <input type="submit" name="simpan" value="Simpan" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
                 <input type="reset" name="reset" value="Bersihkan" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
-            </label><a type="button" href='https://nasywebapps.azurewebsites.net/blob.php';" style="font-family: Source Code Pro, monospace; font-size: 16px;">Upload Foto Buku</a><br>
+                <input type="button" value="Upload Foto Buku" onclick="window.location='blob.php';" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
+            </label><br>
             <p style="font-size: 14px; font-style: bold|italic; color: red;"><?php echo isset($pesan) ? $pesan : "" ?></p>
         </form>
     <?php

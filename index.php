@@ -33,13 +33,13 @@
 
 <body>
     <?php
-    $host = 'localhost';
-    $user = 'root';
-    $pass = '';
-    $db = 'buku';
+    $host = "nasyserver.database.windows.net";
+    $user = "naysadmin";
+    $pass = "emrizkiem1997_";
+    $db = "nasydatabase";
 
     try {
-        $koneksi = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+        $koneksi = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
         $koneksi->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (Exception $sth) {
         echo "Failed: " . $sth;
@@ -94,6 +94,7 @@
             <label>
                 <input type="submit" name="simpan" value="Simpan" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
                 <input type="reset" name="reset" value="Bersihkan" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
+                <input type="button" value="Upload Foto Buku" onclick="window.location='azureBlob.php';" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
             </label><br>
             <p style="font-size: 14px; font-style: bold|italic; color: red;"><?php echo isset($pesan) ? $pesan : "" ?></p>
         </form>

@@ -62,7 +62,7 @@
     // Create blob client.
     $blobClient = BlobRestProxy::createBlobService($connectionString);
 
-    $fileToUpload = "cover-kotlin.jpg";
+    $fileToUpload = "kotlin.jpg";
 
     if (!isset($_GET["Cleanup"])) {
         // Create container options object.

@@ -80,14 +80,14 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
         <tbody>
             <?php
                 do {
-                    foreach($result->getBlobs() as $row) {
+                    foreach($result->getBlobs() as $blob) {
                         ?>
                         <tr>
-                            <td><?php echo $row->getName() ?></td>
-                            <td><?php echo $row->getUrl() ?></td>
+                            <td><?php echo $blob->getName() ?></td>
+                            <td><?php echo $blob->getUrl() ?></td>
                             <td>
                                 <form action="computervision.php" method="post">
-                                    <input type="hidden" name="url" value="<?php echo $row->getUrl() ?>" />
+                                    <input type="hidden" name="url" value="<?php echo $blob->getUrl() ?>" />
                                     <input type="submit" name="submit" value="Analisis" style="font-family: Source Code Pro, monospace; font-size: 16px;" />
                                 </form>
                             </td>

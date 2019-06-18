@@ -29,59 +29,50 @@
 
     $blobClient = BlobRestProxy::createBlobService($connectionString);
 
-    $fileToUpload = "cover-kotlin.jpg";
+    $fileToUpload = "img/working.jpg";
 
     $createContainerOptions = new CreateContainerOptions();
-
     $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
-
     $createContainerOptions->addMetaData("key1", "value1");
     $createContainerOptions->addMetaData("key2", "value2");
 
-    $containerName = "emrizkiem" . generateRandomString();
+    $containerName = "blockblobs" . generateRandomString();
 
     try {
         $blobClient->createContainer($containerName, $createContainerOptions);
-
         $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
         fclose($myfile);
 
         echo "Uploading BlockBlob: " . PHP_EOL;
         echo $fileToUpload;
-        echo "<br/>";
+        echo "<br />";
 
-        $content = fopen($fileToUpload , "r");
-
+        $content = fopen($fileToUpload, "r");
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-
         $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("Buku");
-
+        $listBlobsOptions->setPrefix("Football");
         echo "These are the blobs present in the container: ";
-
         do {
             $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
             foreach ($result->getBlobs() as $blob) {
-
-                echo $blob->getName() . ": " . $blob->getUrl() . "<br/>";
+                echo $blob->getName() . ": " . $blob->getUrl() . "<br />";
             }
 
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
         } while ($result->getContinuationToken());
-           echo "<br/>";
-
-         echo "This is the content of the blob uploaded: ";
+        echo "<br />";
+        echo "This is the content of the blob uploaded: ";
         $blob = $blobClient->getBlob($containerName, $fileToUpload);
-        fpassthru($blob->getContentStream()) ;
-          echo "<br/>";
+        fpassthru($blob->getContentStream());
+        echo "<br />";
     } catch (ServiceException $e) {
         $code = $e->getCode();
         $error_message = $e->getMessage();
-        echo $code . ": " .  $error_message . "<br/>";
+        echo $code . ": " . $error_message . "<br />";
     } catch (InvalidArgumentTypeException $e) {
         $code = $e->getCode();
         $error_message = $e->getMessage();
-        echo $code . ": " .  $error_message . "<br/>";
+        echo $code . ": " . $error_message . "<br />";
     }
     ?>
 
